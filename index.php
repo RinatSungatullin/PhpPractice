@@ -4,8 +4,11 @@ require_once "database/repository/UserRepository.php";
 require_once "src/model/UserModel.php";
 require_once "src/controller/AuthController.php";
 require_once "src/controller/RegistrationController.php";
+require_once "src/controller/MainController.php";
 require_once "PasswordHasher.php";
 require_once "resources/RegistrationDataValidator.php";
+
+session_start();
 
 try {
     $pdo = Database::connect();
@@ -23,6 +26,7 @@ $userModel = new UserModel($userRepository, $passwordHasher, $registrationDataVa
 
 $authController = new AuthController($userModel);
 $registerController = new RegistrationController($userModel);
+$mainController = new MainController();
 
 $route = $_GET['route'];
 $method = $_SERVER['REQUEST_METHOD'];
@@ -34,10 +38,12 @@ switch($route) {
         } elseif ($method === 'GET') {
             $authController->showLoginForm();
         }
-        
         break;
     case '':
-        $authController->showLoginForm();
+        $mainController->showMain();
+        break;
+    case 'main':
+        $mainController->showMain();
         break;
     case 'register':
         
@@ -46,6 +52,10 @@ switch($route) {
         } elseif ($method === 'GET') {
             $registerController->showRegisterForm();
         }
-
         break;
+    case 'logout':
+        $authController->logout();
+        break;
+    default:
+        $authController->showLoginForm();
 }

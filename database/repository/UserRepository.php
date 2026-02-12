@@ -13,23 +13,23 @@ class UserRepository
 
     public function addUser(UserEntity $user)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO users (full_name, username, password_hash)
-        VALUES (:full_name, :username, :password_hash)"); 
+        $stmt = $this->pdo->prepare("INSERT INTO users (full_name, login, password_hash)
+        VALUES (:full_name, :login, :password_hash)"); 
 
         $stmt->execute([
             'full_name' => $user->getFullName(),
-            'username' => $user->getLogin(),
+            'login' => $user->getLogin(),
             'password_hash' => $user->getPasswordHash(),
         ]);
     }
 
     public function getUserByLogin(string $login) : UserEntity
     {
-        $sth = $this->pdo->prepare('SELECT id, full_name, username, password_hash
+        $sth = $this->pdo->prepare('SELECT id, full_name, login, password_hash
                                     FROM users
-                                    WHERE username = :username');
+                                    WHERE login = :login');
 
-        $sth->bindParam(':username', $login, PDO::PARAM_STR);
+        $sth->bindParam(':login', $login, PDO::PARAM_STR);
 
         $sth->execute();
 
@@ -37,7 +37,7 @@ class UserRepository
 
         return new UserEntity(
             $user['full_name'],
-            $user['username'],
+            $user['login'],
             $user['password_hash'],
             $user['id']
         );

@@ -17,8 +17,7 @@ class RegistrationController
 
     public function registerUser()
     {
-        try
-        {
+        try {
             $this->userModel->register(new RegistrationUserDto(
             $_POST['full_name'],
             $_POST['login'],

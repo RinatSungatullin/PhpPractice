@@ -15,7 +15,8 @@ class UserModel
 
     private RegistrationDataValidator $dataValidator;
 
-    public function __construct($userRepository, $passwordHasher, $dataValidator) {
+    public function __construct($userRepository, $passwordHasher, $dataValidator)
+    {
         $this->userRepository = $userRepository;
 
         $this->passwordHasher = $passwordHasher;
@@ -23,7 +24,8 @@ class UserModel
         $this->dataValidator = $dataValidator;
     }
 
-    function register(RegistrationUserDto $registrationUserDto) {
+    function register(RegistrationUserDto $registrationUserDto)
+    {
         
         $fullName = $registrationUserDto->getFullName();
 
@@ -53,6 +55,10 @@ class UserModel
             throw new Exception('invalid confirmed password');
         }
 
+        if ($login === $this->userRepository->getUserByLogin($login)->getLogin()) {
+            throw new Exception('Login already exists');
+        }
+
         $passwordHash = $this->passwordHasher->hash($password);
 
         $this->userRepository->addUser(new UserEntity(
@@ -62,16 +68,25 @@ class UserModel
         ));
     }
 
-    public function authorize(AuthenticationUserDto $authUserDto)
+    public function authorize(AuthenticationUserDto $authUserDto) : UserDto
     {
+        if(empty($authUserDto->getLogin())) {
+            throw new Exception("login is empty");
+        }
+
+        if(empty($authUserDto->getPassword())) {
+            throw new Exception("password is empty");
+        }
+
         $userEntity = $this->userRepository->getUserByLogin($authUserDto->getLogin());
 
         if (!$userEntity) {
-            throw new Exception("invalid login or password");
+            throw new Exception("invalid login");
         }
 
-        if (!($this->passwordHasher->verify($authUserDto->getPassword(), $userEntity->getPasswordHash()))) {
-            throw new Exception('invalid login or password');
+        if (!($this->passwordHasher->verify($authUserDto->getPassword(), 
+            $userEntity->getPasswordHash()))) {
+            throw new Exception('invalid password');
         }
 
         return new UserDto(

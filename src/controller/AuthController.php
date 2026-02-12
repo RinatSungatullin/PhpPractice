@@ -18,20 +18,33 @@ class AuthController
 
     public function authorizeUser()
     {
-        $this->userModel->authorize(new AuthenticationUserDto(
+        try {
+            $user = $this->userModel->authorize(new AuthenticationUserDto(
             $_POST['login'],
             $_POST['password']
         ));
 
-        $user = $this->userModel->authorize(new AuthenticationUserDto(
-            $_POST['login'],
-            $_POST['password']
-        ));
+        $_SESSION['authorized'] = true;
+        $_SESSION['user_id'] = $user->getId();
 
-        echo $user->getId() . "<br>";
-        echo $user->getFullname() . "<br>";
-        echo $user->getLogin() . "<br>";
+        header('Location: index.php?route=main');
 
-        require_once __DIR__ . '/../view/survey_form.php';
+        exit;
+        } catch (Exception $e) {
+            echo "Error: {$e->getMessage()}";
+
+            require_once __DIR__ . "/../view/login.php";
+        }
+        
+    }
+
+    public function logout()
+    {
+        $_SESSION = [];
+
+        session_destroy();
+
+        header("Location: index.php?route=login");
+        exit;
     }
 }

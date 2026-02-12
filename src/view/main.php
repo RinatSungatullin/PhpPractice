@@ -1,3 +1,11 @@
+<?php
+
+if (!$_SESSION['authorized']) {
+    header('Location: index.php?route=login');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,5 +15,8 @@
 </head>
 <body>
     survey
+    <form method="POST" action="index.php?route=logout",>
+        <input type="submit" value="logout">
+    </form>
 </body>
 </html>

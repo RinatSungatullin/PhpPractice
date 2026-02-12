@@ -18,18 +18,3 @@ class Database
         }
     }
 }
-
-/* class Database
-{
-    public static function connect(): PDO
-    {
-        try {
-            $dbh = new PDO('mysql:host=localhost;dbname=survey_db', 'dev', 'Ql_135_ghpts14');
-            
-        } catch(PDOException $e) {
-            echo "Error: {$e->getMessage()}";
-        }
-        
-        return $dbh;
-    }
-} */
