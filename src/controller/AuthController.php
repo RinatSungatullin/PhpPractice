@@ -27,7 +27,7 @@ class AuthController
         $_SESSION['authorized'] = true;
         $_SESSION['user_id'] = $user->getId();
 
-        header('Location: index.php?route=main');
+        header('Location: index.php?route=survey');
 
         exit;
         } catch (Exception $e) {

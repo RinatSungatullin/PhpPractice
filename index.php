@@ -2,11 +2,13 @@
 require_once "database/Database.php";
 require_once "database/repository/UserRepository.php";
 require_once "src/model/UserModel.php";
+require_once "src/model/SurveyModel.php";
 require_once "src/controller/AuthController.php";
 require_once "src/controller/RegistrationController.php";
-require_once "src/controller/MainController.php";
+require_once "src/controller/SurveyController.php";
 require_once "PasswordHasher.php";
 require_once "resources/RegistrationDataValidator.php";
+require_once "resources/SurveyFieldsValidator.php";
 
 session_start();
 
@@ -18,15 +20,21 @@ try {
 
 $userRepository = new UserRepository($pdo);
 
+$surveyRepository = new SurveyRepository($pdo);
+
 $passwordHasher = new PasswordHasher();
 
 $registrationDataValidator = new RegistrationDataValidator();
 
+$surveyFieldsValidator = new SurveyFieldsValidator();
+
 $userModel = new UserModel($userRepository, $passwordHasher, $registrationDataValidator);
+
+$surveyModel = new SurveyModel($surveyRepository, $surveyFieldsValidator);
 
 $authController = new AuthController($userModel);
 $registerController = new RegistrationController($userModel);
-$mainController = new MainController();
+$surveyController = new SurveyController($surveyModel);
 
 $route = $_GET['route'];
 $method = $_SERVER['REQUEST_METHOD'];
@@ -40,10 +48,15 @@ switch($route) {
         }
         break;
     case '':
-        $mainController->showMain();
+        $surveyController->showSurvey();
         break;
-    case 'main':
-        $mainController->showMain();
+    case 'survey':
+        if ($method === 'POST') {
+            $surveyController->submitSurvey();
+        } elseif ($method === 'GET') {
+            $surveyController->showSurvey();
+        }
+        // $surveyController->showSurvey();
         break;
     case 'register':
         
