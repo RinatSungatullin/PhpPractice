@@ -9,17 +9,36 @@ class SurveyModel
     private SurveyRepository $repository;
     private SurveyFieldsValidator $validator;
 
-    public function __construct(SurveyRepository $surveyRepository, SurveyFieldsValidator $surveyFieldsValidator) {
+    public function __construct(SurveyRepository $surveyRepository, SurveyFieldsValidator $surveyFieldsValidator)
+    {
         $this->repository = $surveyRepository;
         $this->validator = $surveyFieldsValidator;
     }
 
-    public function add(SurveyDto $surveyDto) {
+    public function add(SurveyDto $surveyDto)
+    {
         $id = $surveyDto->getId();
         $email = $surveyDto->getEmail();
         $phoneNumber = $surveyDto->getPhoneNumber();
-        $experience = $surveyDto->getExperience();
-        $language = $surveyDto->getLanguage();
+        $experience = strtolower($surveyDto->getExperience());
+
+        switch($surveyDto->getLanguage()) {
+            case 'Java':
+                $language = 'java';
+                break;
+            case 'PHP':
+                $language = 'php';
+                break;
+            case 'C':
+                $language = 'c';
+                break;
+            case 'C#':
+                $language = 'csharp';
+            case 'C++':
+                $language = 'cpp';
+        }
+
+        // $language = $surveyDto->getLanguage();
         $additionalInformation = $surveyDto->getAdditionalInformation();
 
         if (!$this->validator->validateEmail($email)) {
@@ -41,7 +60,7 @@ class SurveyModel
         if (!$this->validator->validateAdditionalInformation($additionalInformation)) {
             throw new Exception('Invalid field: additional information');
         }
-
+        
         $this->repository->addSurvey(new SurveyEntity(
             $id,
             $email,
@@ -51,6 +70,4 @@ class SurveyModel
             $additionalInformation
         ));
     }
-
-
 }

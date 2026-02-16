@@ -35,24 +35,18 @@ class SurveyFieldsValidator
             return false;
         }
 
-        if (!($experience === 'Yes' || $experience === 'No')) {
+        if ($experience !== 'yes' && $experience !== 'no') {
             return false;
         }
 
-        return false;
+        return true;
     }
 
     public function validateLanguage(string $language): bool
     {
-        $languageDict = [
-            'java' => 'Java',
-            'php' => 'PHP',
-            'c' => 'C',
-            'csharp' => 'C#',
-            'cpp' => 'C++'
-        ];
+        $languages = ['java', 'php', 'c', 'csharp', 'cpp'];
 
-        if (empty($language) || !(isset($languageDict[$language]))) {
+        if (empty($language) || !in_array($language, $languages)) {
             return false;
         }
 

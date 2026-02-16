@@ -13,7 +13,7 @@ class SurveyRepository
     public function addSurvey(SurveyEntity $survey)
     {
         $stmt = $this->pdo->prepare("INSERT INTO surveys (
-        id, email, phone_number, experience, language, additional_information
+        user_id, email, phone_number, experience, language, additional_info
         )
         VALUES (:id, :email, :phone_number, :experience, :language, :additional_information)"); 
 

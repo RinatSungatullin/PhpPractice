@@ -4,15 +4,16 @@ class UserEntity
 {
     private ?int $id;
 
-    private string $fullname;
+    private ?string $fullname;
 
-    private string $login;
+    private ?string $login;
 
-    private string $passwordHash;
+    private ?string $passwordHash;
 
-    public function __construct($fullname, $login, $passwordHash, ?int $id = null) {
+    public function __construct(?string $fullName = null, ?string $login = null, 
+                                    ?string $passwordHash = null, ?int $id = null) {
         $this->id = $id;
-        $this->fullname = $fullname;
+        $this->fullname = $fullName;
         $this->login = $login;
         $this->passwordHash = $passwordHash;
     }
