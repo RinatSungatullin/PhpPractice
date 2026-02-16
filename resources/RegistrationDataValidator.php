@@ -6,7 +6,7 @@ class RegistrationDataValidator
     public function __construct()
     {}
 
-    public function isValidFullName($fullName) : bool
+    public function isValidFullName(string $fullName) : bool
     {
         $pattern = "/^[a-zA-Z ]+$/";
 
@@ -21,7 +21,7 @@ class RegistrationDataValidator
         return true;
     }
 
-    public function isValidLogin($login) : bool
+    public function isValidLogin(string $login) : bool
     {   
         $pattern = "/^[a-zA-Z0-9_-]+$/";
 
@@ -36,7 +36,7 @@ class RegistrationDataValidator
         return true;
     }
 
-    public function isValidPassword($password) : bool
+    public function isValidPassword(string $password) : bool
     {
         $pattern = "/^[a-zA-Z0-9_-]+$/";
 
@@ -51,7 +51,7 @@ class RegistrationDataValidator
         return true;
     }
 
-    public function isValidConfirmedPassword($password, $confirmedPassword) : bool
+    public function isValidConfirmedPassword(string $password, string $confirmedPassword) : bool
     {
         if ($password !== $confirmedPassword) {
             return false;

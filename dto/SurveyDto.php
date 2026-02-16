@@ -14,8 +14,8 @@ class SurveyDto
 
     private string $additionalInformation;
 
-    public function __construct($id, $email, $phoneNumber, $experience, 
-                                $language, $additionalInformation) {
+    public function __construct(int $id, string $email, string $phoneNumber, string $experience, 
+                                string $language, string $additionalInformation) {
         $this->id = $id;
         $this->email = $email;
         $this->phoneNumber = $phoneNumber;
@@ -29,7 +29,7 @@ class SurveyDto
         return $this->id;
     }
 
-    public function setId($value)
+    public function setId(int $value)
     {
         $this->id = $value;
     }
@@ -39,7 +39,7 @@ class SurveyDto
         return $this->email;
     }
 
-    public function setEmail($value)
+    public function setEmail(string $value)
     {
         $this->email = $value;
     }
@@ -49,7 +49,7 @@ class SurveyDto
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber($value)
+    public function setPhoneNumber(string $value)
     {
         $this->phoneNumber = $value;
     }
@@ -59,7 +59,7 @@ class SurveyDto
         return $this->experience;
     }
 
-    public function setExperience($value)
+    public function setExperience(string $value)
     {
         $this->experience = $value;
     }
@@ -69,7 +69,7 @@ class SurveyDto
         return $this->language;
     }
 
-    public function setLanguage($value)
+    public function setLanguage(string $value)
     {
         $this->language = $value;
     }
@@ -79,7 +79,7 @@ class SurveyDto
         return $this->additionalInformation;
     }
 
-    public function setAdditionalInformation($value)
+    public function setAdditionalInformation(string $value)
     {
         $this->additionalInformation = $value;
     }

@@ -17,7 +17,7 @@ class AuthenticationUserDto
         return $this->login;
     }
 
-    public function setLogin($value)
+    public function setLogin(string $value)
     {
         $this->login = $value;
     }
@@ -27,7 +27,7 @@ class AuthenticationUserDto
         return $this->password;
     }
 
-    public function setPassword($value)
+    public function setPassword(string $value)
     {
         $this->password = $value;
     }

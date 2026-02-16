@@ -14,8 +14,8 @@ class SurveyEntity
 
     private string $additionalInformation;
 
-    public function __construct($id, $email, $phoneNumber, $experience, 
-                                $language, $additionalInformation) {
+    public function __construct(int $id, string $email, string $phoneNumber, string $experience, 
+                                string $language, string $additionalInformation) {
         $this->id = $id;
         $this->email = $email;
         $this->phoneNumber = $phoneNumber;

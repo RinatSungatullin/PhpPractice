@@ -28,15 +28,8 @@ class SurveyController
                 $_POST['language'],
                 $_POST['additional_information'],
             ));
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             echo $e->getMessage();
         }
-        
-        /* echo 'submit survey' . '<br>';
-        echo 'email: ' . $_POST['email'] . '<br>';
-        echo 'phone number: ' . $_POST['phone_number'] . '<br>';
-        echo 'experience: ' . $_POST['experience'] . '<br>';
-        echo 'language: ' . $_POST['language'] . '<br>';
-        echo 'additional info: ' . nl2br($_POST['additional_information']) . '<br>'; */
     }
 }

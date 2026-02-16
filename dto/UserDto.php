@@ -8,7 +8,7 @@ class UserDto
 
     private string $login;
 
-    public function __construct($id, $fullName, $login) {
+    public function __construct(int $id, string $fullName, string $login) {
         $this->id = $id;
         $this->fullName = $fullName;
         $this->login = $login;
@@ -19,7 +19,7 @@ class UserDto
         return $this->id;
     }
 
-    public function setId($value)
+    public function setId(int $value)
     {
         $this->id = $value;
     }
@@ -29,7 +29,7 @@ class UserDto
         return $this->fullName;
     }
 
-    public function setFullName($value)
+    public function setFullName(string $value)
     {
         $this->fullName = $value;
     }
@@ -39,7 +39,7 @@ class UserDto
         return $this->login;
     }
 
-    public function setLogin($value)
+    public function setLogin(string $value)
     {
         $this->login = $value;
     }
