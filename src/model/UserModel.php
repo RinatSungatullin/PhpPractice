@@ -15,7 +15,7 @@ class UserModel
 
     private RegistrationDataValidator $dataValidator;
 
-    public function __construct($userRepository, $passwordHasher, $dataValidator)
+    public function __construct(UserRepository $userRepository,  PasswordHasher $passwordHasher, RegistrationDataValidator $dataValidator)
     {
         $this->userRepository = $userRepository;
 
@@ -55,7 +55,6 @@ class UserModel
             throw new Exception('invalid confirmed password');
         }
 
-        // ВЫБРАСЫВАЕТСЯ ИСКЛЮЧЕНИЕ
         if ($login === $this->userRepository->getUserByLogin($login)->getLogin()) {
             throw new Exception('Login already exists');
         }

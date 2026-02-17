@@ -35,7 +35,6 @@ class AuthController
 
             require_once __DIR__ . "/../view/login.php";
         }
-        
     }
 
     public function logout()

@@ -56,7 +56,6 @@ switch($route) {
         } elseif ($method === 'GET') {
             $surveyController->showSurvey();
         }
-        // $surveyController->showSurvey();
         break;
     case 'register':
         

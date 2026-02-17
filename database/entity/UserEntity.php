@@ -23,7 +23,7 @@ class UserEntity
         return $this->id;
     }
     
-    public function setId($value)
+    public function setId(int $value)
     {
         $this->id = $value;
     }
@@ -33,7 +33,7 @@ class UserEntity
         return $this->fullname;
     }
 
-    public function setFullName($value)
+    public function setFullName(string $value)
     {
         $this->fullname = $value;
     }
@@ -43,7 +43,7 @@ class UserEntity
         return $this->login;
     }
 
-    public function setLogin($value)
+    public function setLogin(string $value)
     {
         $this->login = $value;
     }
@@ -53,7 +53,7 @@ class UserEntity
         return $this->passwordHash;
     }
 
-    public function setPasswordHash($value)
+    public function setPasswordHash(string $value)
     {
         $this->passwordHash = $value;
     }

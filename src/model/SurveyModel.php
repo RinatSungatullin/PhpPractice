@@ -38,7 +38,6 @@ class SurveyModel
                 $language = 'cpp';
         }
 
-        // $language = $surveyDto->getLanguage();
         $additionalInformation = $surveyDto->getAdditionalInformation();
 
         if (!$this->validator->validateEmail($email)) {

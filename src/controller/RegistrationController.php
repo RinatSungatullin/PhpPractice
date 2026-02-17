@@ -32,10 +32,5 @@ class RegistrationController
 
             require_once __DIR__ . "/../view/register.php";
         }
-        
-        /* echo $_POST['full_name'] . '<br>';
-        echo $_POST['login'] . '<br>';
-        echo $_POST['password'] . '<br>';
-        echo $_POST['accept_password'] . '<br>'; */
     }
 }
