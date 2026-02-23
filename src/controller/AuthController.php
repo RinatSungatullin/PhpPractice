@@ -31,7 +31,8 @@ class AuthController
 
         exit;
         } catch (Exception $e) {
-            echo "Error: {$e->getMessage()}";
+            $error = $e->getMessage();
+            // echo "Error: {$e->getMessage()}";
 
             require_once __DIR__ . "/../view/login.php";
         }

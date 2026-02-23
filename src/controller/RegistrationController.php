@@ -28,7 +28,7 @@ class RegistrationController
             header('Location: index.php?route=login');
             exit;
         } catch (Exception $e) {
-            echo "Error: {$e->getMessage()}";
+            $error = $e->getMessage();
 
             require_once __DIR__ . "/../view/register.php";
         }

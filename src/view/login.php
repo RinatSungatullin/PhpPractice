@@ -1,19 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="POST", action="index.php?route=login">
-        <input type="text" placeholder="Login" name="login">
-        <input type="password" placeholder="Password" name="password">
-        <input type="submit", value="Sign in">
-    </form>
-</body>
-</html> -->
-
 <!doctype html>
 <html lang="en">
 
@@ -26,44 +10,37 @@
 </head>
 
 <body>
-    <!-- <div class="container">
-        <div class="form-group row">
-            <form method="POST" class="form-control" action="index.php?route=login">
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control mb-3" placeholder="Login" name="login">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <input type="password" class="form-control mb-3" placeholder="Password" name="password">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                </div>
-            </div>
-        </form>
-        </div>
-        
-    </div> -->
-    
+
     <div class="container">
-        <div class="form-group row">
-            <form method="POST" class="form-control" action="index.php?route=login">
-                <div class="col-sm-10 col align-self-center">
-                    <input type="text" class="form-control mb-3" placeholder="Login" name="login">
-                </div>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control mb-3" placeholder="Password" name="password">
-                </div>
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                </div>
-        </form>
+        <div class="row justify-content-center">
+            <div class="col-4 vh-100 d-flex align-items-center text-center">
+                <form method="POST" class="form-control p-4 rounded-3" action="index.php?route=login">
+                    <div class="mx-auto col align-self-center ">
+                        <label class="fs-3 mb-3">Authorization</label>
+                    </div>
+                    <div class="mx-auto col align-self-center">
+                        <input type="text" class="form-control mb-3" placeholder="Login" name="login">
+                    </div>
+                    <div class="mx-auto">
+                        <input type="password" class="form-control" placeholder="Password" name="password">
+                        <small class="form-text mb-3">
+                            <p class="text-danger">
+                                <?php if (!empty($error))
+                                echo $error;
+                                ?>
+                            </p>
+                        </small>
+                    </div>
+
+                    <div class="mx-auto">
+                        <button type="submit" class="btn btn-primary w-100 mb-1 btn-sm rounded-4">Sign in</button>
+                    </div>
+                    <div class="mx-auto">
+                        <a href="index.php?route=register" class="btn btn-primary btn-success btn-sm w-100 rounded-4">Sign up</a>
+                    </div>
+                </form>
+            </div>
         </div>
-        
     </div>
 
 </body>
