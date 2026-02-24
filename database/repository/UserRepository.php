@@ -35,9 +35,9 @@ class UserRepository
 
         $user = $sth->fetch(PDO::FETCH_ASSOC);
 
-        if (!$user) {
+        /* if (!$user) {
             throw new Exception('user not found');
-        }
+        } */
 
         return new UserEntity(
             $user['full_name'],

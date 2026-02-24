@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . "/Language.php";
+
 class SurveyFieldsValidator
 {
     public function validateEmail(string $email): bool
@@ -44,16 +46,20 @@ class SurveyFieldsValidator
 
     public function validateLanguage(string $language): bool
     {
-        $languages = ['java', 'php', 'c', 'csharp', 'cpp'];
-
-        if (empty($language) || !in_array($language, $languages)) {
+        // $languages = ['java', 'php', 'c', 'csharp', 'cpp'];
+        
+        $lang = Language::tryFrom($language)->name;
+        
+        if (!$lang) {
             return false;
         }
+
+        
 
         return true;
     }
 
-    public function validateAdditionalInformation(string $additionalInformation) : bool
+    public function validateAdditionalInformation(string $additionalInformation): bool
     {
         if (strlen($additionalInformation) > 255) {
             return false;

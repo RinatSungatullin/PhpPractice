@@ -56,7 +56,7 @@ class UserModel
         }
 
         if ($login === $this->userRepository->getUserByLogin($login)->getLogin()) {
-            throw new Exception('Login already exists');
+            throw new Exception('login already exists');
         }
 
         $passwordHash = $this->passwordHasher->hash($password);

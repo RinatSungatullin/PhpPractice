@@ -20,9 +20,9 @@ if ($_SESSION['authorized'] !== true || !isset($_SESSION['authorized'])) {
 
     <form method="POST" action="index.php?route=survey">
         <label>Email</label><br>
-        <input type="text" name="email"><br>
+        <input type="text" name="email" value="test@gmail.com"><br>
         <label>Phone number</label><br>
-        <input type="text" name="phone_number"><br>
+        <input type="text" name="phone_number" value="+79998881212"><br>
         <label>Experience</label><br>
         <label>Yes</label>
         <input type="radio" name="experience" value="Yes"><br>
@@ -30,8 +30,9 @@ if ($_SESSION['authorized'] !== true || !isset($_SESSION['authorized'])) {
         <input type="radio" name="experience" value="No"><br>
         <label>Language</label><br>
         <select name="language">
-            <option value="">Select language</option>
             <option value="Java">Java</option>
+            <option value="">Select language</option>
+            
             <option value="PHP">PHP</option>
             <option value="C">C</option>
             <option value="C#">C#</option>

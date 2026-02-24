@@ -3,6 +3,7 @@
 require_once __DIR__ . "/../../database/repository/SurveyRepository.php";
 require_once __DIR__ . "/../../dto/SurveyDto.php";
 require_once __DIR__ . "/../../resources/SurveyFieldsValidator.php";
+require_once __DIR__ . "/../../resources/Language.php";
 
 class SurveyModel
 {
@@ -21,22 +22,7 @@ class SurveyModel
         $email = $surveyDto->getEmail();
         $phoneNumber = $surveyDto->getPhoneNumber();
         $experience = strtolower($surveyDto->getExperience());
-
-        switch($surveyDto->getLanguage()) {
-            case 'Java':
-                $language = 'java';
-                break;
-            case 'PHP':
-                $language = 'php';
-                break;
-            case 'C':
-                $language = 'c';
-                break;
-            case 'C#':
-                $language = 'csharp';
-            case 'C++':
-                $language = 'cpp';
-        }
+        $language = $surveyDto->getLanguage();
 
         $additionalInformation = $surveyDto->getAdditionalInformation();
 
@@ -65,7 +51,7 @@ class SurveyModel
             $email,
             $phoneNumber,
             $experience,
-            $language,
+            Language::from($language)->name,
             $additionalInformation
         ));
     }

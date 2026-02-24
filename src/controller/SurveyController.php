@@ -31,5 +31,7 @@ class SurveyController
         } catch (Exception $e) {
             echo $e->getMessage();
         }
+
+        require_once __DIR__ . '/../view/survey.php';
     }
 }
