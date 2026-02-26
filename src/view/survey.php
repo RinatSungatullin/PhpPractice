@@ -98,9 +98,7 @@ if ($_SESSION['authorized'] !== true || !isset($_SESSION['authorized'])) {
                     </div>
                     <div class="form-group mb-3">
                         <label for="additionalInfo">Additional information (max 255 symbols)</label>
-                        <textarea name="additional_information" class="form-control" id="additionalInfo" rows="3">
-                            <?= htmlspecialchars($survey->additional_info ?? '') ?>
-                        </textarea>
+                        <textarea name="additional_information" class="form-control" id="additionalInfo" rows="3"><?= htmlspecialchars($survey->additional_info ?? '') ?></textarea>
                     </div>
                     <small class="form-text mb-3">
                         <p class="text-danger">
@@ -110,11 +108,6 @@ if ($_SESSION['authorized'] !== true || !isset($_SESSION['authorized'])) {
                             ?>
                         </p>
                     </small>
-                    <?php
-                    if ($survey === null) {
-                        echo '<button type="submit" class="btn btn-primary">Submit</button>'; 
-                    }
-                    ?>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     </fieldset>
                 </form>

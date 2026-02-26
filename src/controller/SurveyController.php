@@ -47,6 +47,7 @@ class SurveyController
             $error = $e->getMessage();
         }
 
-        require_once __DIR__ . '/../view/survey.php';
+        header('Location: index.php?route=survey');
+        exit;
     }
 }
