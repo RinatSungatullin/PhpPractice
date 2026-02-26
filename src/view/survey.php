@@ -37,6 +37,9 @@ if ($_SESSION['authorized'] !== true || !isset($_SESSION['authorized'])) {
             <div class="col-4">
 
                 <form method="POST" action="index.php?route=survey">
+                    <?php $isDisabled = !empty($survey); ?>
+                    <fieldset <?= $isDisabled ? 'disabled' : '' ?>>
+                    
                     <div class="form-group mb-3">
                         <label for="fullNameInput">Full name</label>
                         <input type="text"
@@ -68,8 +71,7 @@ if ($_SESSION['authorized'] !== true || !isset($_SESSION['authorized'])) {
                             class="form-check-input"
                             type="radio"
                             name="experience"
-                            id="experience1" value="yes"
-                            <?= ($survey->experience ?? '') === 'yes' ? 'checked' : '' ?>>
+                            id="experience1" value="yes">
                         <label class="form-check-label" for="experience1">
                             yes
                         </label>
@@ -113,6 +115,8 @@ if ($_SESSION['authorized'] !== true || !isset($_SESSION['authorized'])) {
                         echo '<button type="submit" class="btn btn-primary">Submit</button>'; 
                     }
                     ?>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    </fieldset>
                 </form>
             </div>
         </div>
