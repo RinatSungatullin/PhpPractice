@@ -4,6 +4,11 @@ require_once __DIR__ . "/Language.php";
 
 class SurveyFieldsValidator
 {
+    public function validFullName(string $fullName): bool
+    {
+        return !empty($fullName);
+    }
+
     public function validateEmail(string $email): bool
     {
         if (
@@ -46,17 +51,7 @@ class SurveyFieldsValidator
 
     public function validateLanguage(string $language): bool
     {
-        // $languages = ['java', 'php', 'c', 'csharp', 'cpp'];
-        
-        $lang = Language::tryFrom($language)->name;
-        
-        if (!$lang) {
-            return false;
-        }
-
-        
-
-        return true;
+        return Language::tryFrom($language) !== null;
     }
 
     public function validateAdditionalInformation(string $additionalInformation): bool

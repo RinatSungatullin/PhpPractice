@@ -14,6 +14,20 @@ class SurveyController
 
     public function showSurvey()
     {
+        $surveyDto = $this->surveyModel->getSurvey($_SESSION['user_id']);
+
+        if ($surveyDto !== null) {
+            $survey = (object) [
+                'id' => $surveyDto->getId(),
+                'full_name' => $surveyDto->getFullName(),
+                'email' => $surveyDto->getEmail(),
+                'phone_number' => $surveyDto->getPhoneNumber(),
+                'experience' => $surveyDto->getExperience(),
+                'language' => $surveyDto->getLanguage(),
+                'additional_info' => $surveyDto->getAdditionalInformation(),
+            ];
+        }
+
         require_once __DIR__ . '/../view/survey.php';
     }
 
@@ -22,6 +36,7 @@ class SurveyController
         try {
             $this->surveyModel->add(new SurveyDto(
                 $_SESSION['user_id'],
+                $_POST['full_name'],
                 $_POST['email'],
                 $_POST['phone_number'],
                 $_POST['experience'],
@@ -29,7 +44,7 @@ class SurveyController
                 $_POST['additional_information'],
             ));
         } catch (Exception $e) {
-            echo $e->getMessage();
+            $error = $e->getMessage();
         }
 
         require_once __DIR__ . '/../view/survey.php';

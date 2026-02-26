@@ -16,9 +16,6 @@
                         <label class="fs-3 mb-3">Registration</label>
                     </div>
                     <div class="mx-auto col align-self-center">
-                        <input type="text" class="form-control mb-3" placeholder="Full name" name="full_name">
-                    </div>
-                    <div class="mx-auto col align-self-center">
                         <input type="text" class="form-control mb-3" placeholder="Login" name="login">
                     </div>
                     <div class="mx-auto mb-3">

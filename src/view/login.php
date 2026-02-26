@@ -1,3 +1,14 @@
+<?php
+
+if (isset($_SESSION['authorized'])) {
+    if ($_SESSION['authorized'] === true || isset($_SESSION['authorized'])) {
+    header('Location: index.php?route=survey');
+    exit;
+}
+}
+
+?>
+
 <!doctype html>
 <html lang="en">
 

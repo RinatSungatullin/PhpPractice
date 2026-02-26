@@ -4,6 +4,8 @@ class SurveyEntity
 {
     private int $id;
 
+    private string $fullname;
+
     private string $email;
 
     private string $phoneNumber;
@@ -14,9 +16,10 @@ class SurveyEntity
 
     private string $additionalInformation;
 
-    public function __construct(int $id, string $email, string $phoneNumber, string $experience, 
-                                string $language, string $additionalInformation) {
+    public function __construct(int $id, string $email, string $fullName, string $phoneNumber,
+                                string $experience, string $language, string $additionalInformation) {
         $this->id = $id;
+        $this->fullname = $fullName;
         $this->email = $email;
         $this->phoneNumber = $phoneNumber;
         $this->experience = $experience;
@@ -32,6 +35,16 @@ class SurveyEntity
     public function setId(int $value)
     {
         $this->id = $value;
+    }
+
+    public function getFullName()
+    {
+        return $this->fullname;
+    }
+
+    public function setFullName(string $value)
+    {
+        $this->fullname = $value;
     }
 
     public function getEmail() : string

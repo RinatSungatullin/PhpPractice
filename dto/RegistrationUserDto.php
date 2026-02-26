@@ -2,29 +2,16 @@
 
 class RegistrationUserDto
 {
-    private string $full_name;
-
     private string $login;
 
     private string $password;
 
     private string $confirmed_password;
 
-    public function __construct(string $full_name, string $login, string $password, string $accepted_password) {
-        $this->full_name = $full_name;
+    public function __construct(string $login, string $password, string $accepted_password) {
         $this->login = $login;
         $this->password = $password;
         $this->confirmed_password = $accepted_password;
-    }
-
-    public function getFullName()
-    {
-        return $this->full_name;
-    }
-
-    public function setFullName(string $value)
-    {
-        $this->full_name = $value;
     }
 
     public function getLogin()

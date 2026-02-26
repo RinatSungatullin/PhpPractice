@@ -4,6 +4,8 @@ class SurveyDto
 {
     private int $id;
 
+    private string $fullName;
+
     private string $email;
 
     private string $phoneNumber;
@@ -14,9 +16,10 @@ class SurveyDto
 
     private string $additionalInformation;
 
-    public function __construct(int $id, string $email, string $phoneNumber, string $experience, 
-                                string $language, string $additionalInformation) {
+    public function __construct(int $id, string $fullName, string $email, string $phoneNumber,
+                                string $experience, string $language, string $additionalInformation) {
         $this->id = $id;
+        $this->fullName = $fullName;
         $this->email = $email;
         $this->phoneNumber = $phoneNumber;
         $this->experience = $experience;
@@ -32,6 +35,16 @@ class SurveyDto
     public function setId(int $value)
     {
         $this->id = $value;
+    }
+
+    public function getFullName()
+    {
+        return $this->fullName;
+    }
+
+    public function setFullName(string $value)
+    {
+        $this->fullName = $value;
     }
 
     public function getEmail() : string

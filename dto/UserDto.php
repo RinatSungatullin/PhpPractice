@@ -4,13 +4,10 @@ class UserDto
 {
     private int $id;
 
-    private string $fullName;
-
     private string $login;
 
-    public function __construct(int $id, string $fullName, string $login) {
+    public function __construct(int $id, string $login) {
         $this->id = $id;
-        $this->fullName = $fullName;
         $this->login = $login;
     }
 
@@ -22,16 +19,6 @@ class UserDto
     public function setId(int $value)
     {
         $this->id = $value;
-    }
-
-    public function getFullname()
-    {
-        return $this->fullName;
-    }
-
-    public function setFullName(string $value)
-    {
-        $this->fullName = $value;
     }
 
     public function getLogin()

@@ -19,12 +19,17 @@ class SurveyModel
     public function add(SurveyDto $surveyDto)
     {
         $id = $surveyDto->getId();
+        $fullName = $surveyDto->getFullName();
         $email = $surveyDto->getEmail();
         $phoneNumber = $surveyDto->getPhoneNumber();
         $experience = strtolower($surveyDto->getExperience());
         $language = $surveyDto->getLanguage();
 
         $additionalInformation = $surveyDto->getAdditionalInformation();
+
+        if (!$this->validator->validFullName($fullName)) {
+            throw new Exception('Invalid field: full name');
+        }
 
         if (!$this->validator->validateEmail($email)) {
             throw new Exception('Invalid field: email');
@@ -48,11 +53,31 @@ class SurveyModel
         
         $this->repository->addSurvey(new SurveyEntity(
             $id,
+            $fullName,
             $email,
             $phoneNumber,
             $experience,
             Language::from($language)->name,
             $additionalInformation
         ));
+    }
+
+    public function getSurvey(int $userId): ?SurveyDto
+    {
+        $surveyEntity = $this->repository->getSurvey($userId);
+
+        if ($surveyEntity === null) {
+            return null;
+        }
+
+        return new SurveyDto(
+            $surveyEntity->getId(),
+            $surveyEntity->getFullName(),
+            $surveyEntity->getEmail(),
+            $surveyEntity->getPhoneNumber(),
+            $surveyEntity->getExperience(),
+            constant(Language::class . '::' . $surveyEntity->getLanguage())->value,
+            $surveyEntity->getAdditionalInformation()
+        );
     }
 }

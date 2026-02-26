@@ -4,16 +4,12 @@ class UserEntity
 {
     private ?int $id;
 
-    private ?string $fullname;
-
     private ?string $login;
 
     private ?string $passwordHash;
 
-    public function __construct(?string $fullName = null, ?string $login = null, 
-                                ?string $passwordHash = null, ?int $id = null) {
+    public function __construct(?string $login = null, ?string $passwordHash = null, ?int $id = null) {
         $this->id = $id;
-        $this->fullname = $fullName;
         $this->login = $login;
         $this->passwordHash = $passwordHash;
     }
@@ -26,16 +22,6 @@ class UserEntity
     public function setId(int $value)
     {
         $this->id = $value;
-    }
-
-    public function getFullName()
-    {
-        return $this->fullname;
-    }
-
-    public function setFullName(string $value)
-    {
-        $this->fullname = $value;
     }
 
     public function getLogin()

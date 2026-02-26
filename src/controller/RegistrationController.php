@@ -19,7 +19,6 @@ class RegistrationController
     {
         try {
             $this->userModel->register(new RegistrationUserDto(
-            $_POST['full_name'],
             $_POST['login'],
             $_POST['password'],
             $_POST['accept_password']

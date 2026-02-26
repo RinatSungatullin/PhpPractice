@@ -36,6 +36,10 @@ $authController = new AuthController($userModel);
 $registerController = new RegistrationController($userModel);
 $surveyController = new SurveyController($surveyModel);
 
+if (!isset($_GET['route'])) {
+    $authController->showLoginForm();
+}
+
 $route = $_GET['route'];
 $method = $_SERVER['REQUEST_METHOD'];
 
