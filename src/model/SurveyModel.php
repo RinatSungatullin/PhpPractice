@@ -80,4 +80,10 @@ class SurveyModel
             $surveyEntity->getAdditionalInformation()
         );
     }
+
+    public function deleteSurvey(int $userId)
+    {
+        $this->repository->deleteSurvey($userId);
+    }
+
 }

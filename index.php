@@ -76,6 +76,9 @@ switch($route) {
     case 'logout':
         $authController->logout();
         break;
+    case 'delete-survey':
+        $surveyController->deleteSurvey();
+        break;
     default:
         $authController->showLoginForm();
 }

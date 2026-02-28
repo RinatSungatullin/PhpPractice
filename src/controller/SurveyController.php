@@ -51,7 +51,10 @@ class SurveyController
         exit;
     }
 
-    public function deleteSurvey(int $userId) {
-        
+    public function deleteSurvey() {
+        $this->surveyModel->deleteSurvey($_SESSION['user_id']);
+
+        header('Location: index.php?route=survey');
+        exit;
     }
 }

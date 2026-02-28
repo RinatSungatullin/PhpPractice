@@ -27,8 +27,8 @@ if ($_SESSION['authorized'] !== true || !isset($_SESSION['authorized'])) {
                     <button type="submit" class="btn btn-danger">Logout</button>
                 </form>
 
-                <form>
-                    <button type="submit" class="btn btn-danger">Reset results</button>
+                <form method="POST" action="index.php?route=delete-survey">
+                    <button type="submit" class="btn btn-danger">Reset my account</button>
                 </form>
             </div>
         </div>
