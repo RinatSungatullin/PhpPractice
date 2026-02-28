@@ -50,4 +50,8 @@ class SurveyController
         header('Location: index.php?route=survey');
         exit;
     }
+
+    public function deleteSurvey(int $userId) {
+        
+    }
 }

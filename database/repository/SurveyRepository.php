@@ -35,7 +35,6 @@ class SurveyRepository
                                     FROM surveys
                                     WHERE user_id = :id');
 
-        //$sth->bindParam(':login', $login, PDO::PARAM_STR);
 
         $sth->execute([
             'id' => $userId
@@ -56,5 +55,16 @@ class SurveyRepository
             $survey['language'],
             $survey['additional_info']
         );
+    }
+
+    public function deleteSurvey(int $userId)
+    {
+        $sth = $this->pdo->prepare('DELETE FROM surveys
+                                    WHERE user_id = :id');
+
+
+        $sth->execute([
+            'id' => $userId
+        ]);
     }
 }
